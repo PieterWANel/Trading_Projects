@@ -172,12 +172,12 @@ Key metrics tracked:
 
 ## Academic Context
 
-This project extends the volatility-sentiment research methodology developed in the author's MCom dissertation (*"Volatility and Sentiment: An EGARCH-X Analysis of US Equity Markets"*, University of Pretoria, 2024) into a live trading framework. The key methodological evolution is the shift from EGARCH-X conditional volatility estimation to Bayesian Markov-switching regime classification, allowing for uncertainty-aware systematic trading decisions.
+This project extends the volatility-sentiment research methodology I developed in my MCom dissertation ("From News to Noise: Does Media Sentiment Drive Equity Market Volatility?", University of Pretoria, 2025) into a live trading framework. The key methodological evolution is the shift from EGARCH-X conditional volatility estimation to Bayesian Markov-switching regime classification, allowing for uncertainty-aware systematic trading decisions.
 
-Key references:
-- Hamilton, J.D. (1989). *A new approach to the economic analysis of nonstationary time series and the business cycle.* Econometrica.
-- Kim, C.J. & Nelson, C.R. (1999). *State-Space Models with Regime Switching.* MIT Press.
-- Ang, A. & Bekaert, G. (2002). *Regime switches in interest rates.* Journal of Business & Economic Statistics.
+**Key references:**
+- Hamilton, J.D. (1989). A new approach to the economic analysis of nonstationary time series and the business cycle. *Econometrica*.
+- Kim, C.J. & Nelson, C.R. (1999). *State-Space Models with Regime Switching*. MIT Press.
+- Ang, A. & Bekaert, G. (2002). Regime switches in interest rates. *Journal of Business & Economic Statistics*.
 
 ---
 
