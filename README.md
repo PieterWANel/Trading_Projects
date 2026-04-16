@@ -110,37 +110,42 @@ Classical regime models trained on US data fail to capture this structure.
 ---
 
 ## 📁 Repository Structure
-momentum_strategy/              # Strategy 1 — US momentum
-├── vectorized_backtest.py
-├── event_driven_backtest.py
-└── results/
-jse_regime_strategy/            # Strategy 2 — JSE regime-switching
-├── config/
-│   └── settings.yaml
-├── data/
-│   ├── raw/
-│   └── processed/
-├── src/
+
+```
+├── momentum_strategy/               # Strategy 1 — US Momentum
+│   ├── vectorized_backtest.py
+│   ├── event_driven_backtest.py
+│   └── results/
+│
+├── jse_regime_strategy/             # Strategy 2 — JSE Regime-Switching
+│   ├── config/
+│   │   └── settings.yaml
 │   ├── data/
-│   │   ├── loader.py
-│   │   └── features.py
-│   ├── models/
-│   │   ├── markov_switching.py
-│   │   └── bayesian_regime.py
-│   ├── strategy/
-│   │   ├── router.py
-│   │   └── backtest.py
-│   └── utils/
-│       ├── plotting.py
-│       └── metrics.py
-├── notebooks/
-│   ├── 01_eda.ipynb
-│   ├── 02_regime_baseline.ipynb
-│   ├── 03_bayesian_mcmc.ipynb
-│   └── 04_backtest.ipynb
-└── results/
-utils/                          # Shared utilities
-requirements.txt
+│   │   ├── raw/
+│   │   └── processed/
+│   ├── src/
+│   │   ├── data/
+│   │   │   ├── loader.py
+│   │   │   └── features.py
+│   │   ├── models/
+│   │   │   ├── markov_switching.py
+│   │   │   └── bayesian_regime.py
+│   │   ├── strategy/
+│   │   │   ├── router.py
+│   │   │   └── backtest.py
+│   │   └── utils/
+│   │       ├── plotting.py
+│   │       └── metrics.py
+│   ├── notebooks/
+│   │   ├── 01_eda.ipynb
+│   │   ├── 02_regime_baseline.ipynb
+│   │   ├── 03_bayesian_mcmc.ipynb
+│   │   └── 04_backtest.ipynb
+│   └── results/
+│
+├── utils/                           # Shared utilities
+└── requirements.txt
+```
 
 ---
 
