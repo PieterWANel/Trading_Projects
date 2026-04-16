@@ -1,0 +1,85 @@
+# ============================================================
+# JSE Regime Strategy — Central Configuration
+# ============================================================
+
+data:
+  start_date: "2005-01-01"
+  end_date: "today"
+  
+  tickers:
+    jse_top40: "^J200.JO"          # JSE Top 40
+    usdzar: "ZAR=X"         # Rand/Dollar
+    gold: "GC=F"            # Gold futures
+    brent: "BZ=F"           # Brent crude
+    vix: "^VIX"             # CBOE Volatility Index
+  
+  # JSE Top 40 major constituents for cross-sectional work (Phase 2)
+  constituents:
+    - "NPN.JO"    # Naspers
+    - "AGL.JO"    # Anglo American
+    - "BTI.JO"    # British American Tobacco
+    - "SBK.JO"    # Standard Bank
+    - "FSR.JO"    # FirstRand
+    - "SOL.JO"    # Sasol
+    - "BHP.JO"    # BHP Group
+    - "MTN.JO"    # MTN Group
+    - "SLM.JO"    # Sanlam
+    - "ABG.JO"    # Absa Group
+
+features:
+  vol_window: 21              # Rolling window for realized volatility (trading days)
+  autocorr_window: 21         # Rolling window for return autocorrelation
+  vol_of_vol_window: 63       # Rolling window for vol-of-vol (quarterly)
+  ewm_span: 10                # Exponential smoothing span for features
+
+regimes:
+  n_regimes: 3                # Number of hidden states
+  labels:
+    0: "Risk-On"
+    1: "Risk-Off"
+    2: "Stagflation"
+
+mcmc:
+  draws: 2000                 # MCMC posterior samples
+  tune: 1000                  # Tuning/warmup steps
+  chains: 4                   # Parallel chains
+  target_accept: 0.9          # Target acceptance rate for NUTS sampler
+  random_seed: 42
+
+strategy:
+  transaction_cost_bps: 30    # Round-trip transaction cost (basis points)
+  min_regime_confidence: 0.6  # Minimum posterior probability to act on regime signal
+  
+  # Position sizing by regime and confidence
+  position_limits:
+    risk_on:
+      max_long: 1.0           # Full long
+      max_short: 0.0
+    risk_off:
+      max_long: 0.3           # Defensive, mostly cash
+      max_short: 0.0
+    stagflation:
+      max_long: 0.5           # Partial exposure
+      max_short: 0.0
+
+  # Stop loss by regime (% drawdown from entry)
+  stop_loss:
+    risk_on: 0.08
+    risk_off: 0.04
+    stagflation: 0.06
+
+backtest:
+  initial_capital: 100000     # ZAR
+  benchmark: "^J200"
+  rebalance_frequency: "W"    # Weekly rebalancing (Wednesday signals)
+  slippage_bps: 5             # Additional slippage estimate
+
+performance:
+  risk_free_rate: 0.075       # SARB repo rate proxy (annualised)
+  annualisation_factor: 252   # Trading days per year
+
+paths:
+  raw_data: "data/raw/"
+  processed_data: "data/processed/"
+  figures: "results/figures/"
+  reports: "results/reports/"
